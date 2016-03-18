@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A lib/cli to commit changes and create pull request using the github api",
   "bin": {
-    "pull-request": "pull-request.js",
-    "commit": "commit.js"
+    "pull-request": "bin/pull-request.js",
+    "commit": "bin/commit.js"
   },
   "main": "index.js",
   "scripts": {

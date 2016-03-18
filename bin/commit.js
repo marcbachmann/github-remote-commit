@@ -1,26 +1,23 @@
+#!/usr/bin/env node
 var fs = require('fs')
 var path = require('path')
-var rc = require('rc')('github_remote_commit')
-var github = require('./index')
+var rc = require('rc')('github_commit')
+var github = require('../index')
 
-github.pullRequest({
+var file = getFile(rc._[0])
+github.commit({
   token: rc.t || rc.token,
   message: rc.m || rc.message,
-  file: getFile(rc._[0]),
+  file: file,
   base: rc.b || rc.base,
-  head: rc.h || rc.head,
-  pr: {
-    title: rc.title,
-    body: rc.body,
-    issue: rc.issue
-  }
+  head: rc.h || rc.head
 }, function (err, res) {
   if (err) return exit(err)
   console.log('Success', res)
 })
 
 function getFile (filePath) {
-  if (!filePath) return
+  if (!filePath) exit("Can't commit without a file. Please pass one in the arguments.")
   var fileContent = fs.readFileSync(path.resolve(filePath), 'utf8')
   return {
     path: filePath,
@@ -31,15 +28,13 @@ function getFile (filePath) {
 function exit (error) {
   if (error) console.error(error + '\n')
   console.log([
-    'Usage: pull-request path/to/file/to/commit.md [arguments]',
+    'Usage: commit path/to/file/to/commit.md [arguments]',
     '',
     'Where [arguments] is a combination of:',
     '  -t, --token     A github token',
     '  -m, --message   A commit message',
     '  -b, --base      Base branch, e.g. user/repo:master',
-    '  -h, --head      Target branch, e.g. fix-something',
-    '  --title         The pull request title, required',
-    '  --body   The pull request body'
+    '  -h, --head      Target branch, e.g. fix-something'
   ].join('\n'))
 
   process.exit(1)
