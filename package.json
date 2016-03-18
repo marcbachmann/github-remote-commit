@@ -1,0 +1,37 @@
+{
+  "name": "github-remote-commit",
+  "version": "1.0.0",
+  "description": "A lib/cli to commit changes and create pull request using the github api",
+  "bin": {
+    "pull-request": "pull-request.js",
+    "commit": "commit.js"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "author": "Marc Bachmann <marc.brookman@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "github-basic": "^6.0.0",
+    "lodash.defaults": "^4.0.1",
+    "rc": "^1.1.6"
+  },
+  "devDependencies": {
+    "standard": "^6.0.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcbachmann/github-remote-commit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/marcbachmann/github-remote-commit/issues"
+  },
+  "homepage": "https://github.com/marcbachmann/github-remote-commit#readme",
+  "keywords": [
+    "github",
+    "commit",
+    "pull-request",
+    "cli"
+  ]
+}
