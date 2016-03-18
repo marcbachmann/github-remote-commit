@@ -1,6 +1,6 @@
 {
   "name": "github-remote-commit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lib/cli to commit changes and create pull request using the github api",
   "bin": {
     "pull-request": "bin/pull-request.js",
